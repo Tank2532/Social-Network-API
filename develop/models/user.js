@@ -6,24 +6,21 @@ const userSchema = new Schema(
             type: String,
             unique: true,
             required: true,
-            // TODO: Trimmed
+            trimmed: true,
         },
         email: {
             type: String,
             required: true,
             unique: true,
-            // TODO: Match email address (mongoose)
         },
-        thoughts: [
-            {
-            // TODO: Array of id referencing thought model
-            },
-        ],
-        friends: [
-            {
-            // TODO: Array of id referencing User model
-            }
-        ]
+        thoughts: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }],
+        friends: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }],
     }
 );
 
